@@ -8,6 +8,7 @@ env:
   MONGODB_DB_NAME: gha-demo
 jobs:
   test:
+    container: node-16
     environment: testing
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.hnwa878.mongodb.net
