@@ -13,9 +13,9 @@ jobs:
     environment: testing
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
-      MONGODB_CLUSTER_ADDRESS: mongod
+      MONGODB_CLUSTER_ADDRESS: mongodb
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: 
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 27017
     services:
         mongodb:
