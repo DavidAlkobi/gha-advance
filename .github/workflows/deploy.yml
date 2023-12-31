@@ -38,6 +38,7 @@ jobs:
           echo "MONGODB_USERNAME ${{ env.MONGODB_USERNAME }}"
           echo "MONGODB_DB_NAME ${{ env.MONGODB_DB_NAME }}"
           echo "PORT ${{ env.PORT }}"
+          sleep 10  # Add a delay to allow time for MongoDB to start
           ps aux | grep mongod  # Check if the MongoDB service process is running
 
       - name: Run server
