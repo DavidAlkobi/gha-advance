@@ -12,11 +12,10 @@ jobs:
     container: node:16
     environment: testing
     env:
-      MONGODB_CONNECTION_PROTOCOL: mongodb
       MONGODB_CLUSTER_ADDRESS: mongodb
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
-      PORT: 27017
+      PORT: 8080
     services:
         mongodb:
           image: mongo
@@ -33,14 +32,6 @@ jobs:
           key: npm-deps-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         run: npm ci
-      - name: Output information
-        run: |
-          echo "MONGODB_USERNAME ${{ env.MONGODB_USERNAME }}"
-          echo "MONGODB_DB_NAME ${{ env.MONGODB_DB_NAME }}"
-          echo "PORT ${{ env.PORT }}"
-          sleep 10  # Add a delay to allow time for MongoDB to start
-          ps aux | grep mongod  # Check if the MongoDB service process is running
-
       - name: Run server
         run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
@@ -53,5 +44,4 @@ jobs:
     steps:
       - name: Output information
         run: |     
-          echo "MONGODB_USERNAME ${{ env.MONGODB_USERNAME }}"   
           echo "MONGODB_DB_NAME ${{ env.MONGODB_DB_NAME }}"
