@@ -14,15 +14,15 @@ jobs:
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
       MONGODB_CLUSTER_ADDRESS: mongodb
-      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      MONGODB_USERNAME: root
+      MONGODB_PASSWORD: example
       PORT: 27017
     services:
         mongodb:
           image: mongo
           env:
-            MONGO_INITDB_ROOT_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-            MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
     steps:
       - name: Get Code
         uses: actions/checkout@v3
