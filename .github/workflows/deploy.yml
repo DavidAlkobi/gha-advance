@@ -38,7 +38,7 @@ jobs:
           echo "MONGODB_USERNAME ${{ env.MONGODB_USERNAME }}"
           echo "MONGODB_DB_NAME ${{ env.MONGODB_DB_NAME }}"
           echo "PORT ${{ env.PORT }}"
-          netstat -tulpn  # Check if the MongoDB service is listening on the expected port
+          ps aux | grep mongod  # Check if the MongoDB service process is running
 
       - name: Run server
         run: npm start & npx wait-on http://127.0.0.1:$PORT
