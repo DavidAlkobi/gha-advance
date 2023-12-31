@@ -15,8 +15,8 @@ jobs:
       MONGODB_CONNECTION_PROTOCOL: mongodb
       MONGODB_CLUSTER_ADDRESS: mongod
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
-      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-      PORT: 8080
+      MONGODB_PASSWORD: 
+      PORT: 27017
     services:
         mongodb:
           image: mongo
